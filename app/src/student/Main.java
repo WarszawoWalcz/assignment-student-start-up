@@ -3,6 +3,9 @@ package student;
 import java.util.*;
 
 public class Main {
+    /**
+     * Authors: Dawid Dudek s1074780 Adriana Vasieleva s1071981
+     */
 
     public static void main(String[] args) {
         welcome();
@@ -71,17 +74,24 @@ public class Main {
         int sNum = 0;
         while (sNum != -1) {
             while (true) {
-                System.out.println("Please enter a student number: ");
-                sNum = scan.nextInt();
-                if (sNum == -1) break;
-                Student name = group.getStudent(sNum);
-                if (name != null) {
-                    System.out.println("Please for student fill in as follow: first name last name \n then click Enter");
-                    String fNameNew = scan.next();
-                    String lNameNew = scan.next();
+                try {
+                    System.out.println("Please enter a student number: ");
+                    sNum = scan.nextInt();
 
-                    group.changeStudent(name, fNameNew, lNameNew);
-                    System.out.println("Now the group contains: \n" + group);
+                    if (sNum == -1) break;
+                    Student name = group.getStudent(sNum);
+                    if (name != null) {
+                        System.out.println("Please for student fill in as follow: first name last name \n then click Enter");
+                        String fNameNew = scan.next();
+                        String lNameNew = scan.next();
+
+                        group.changeStudent(name, fNameNew, lNameNew);
+                        System.out.println("Now the group contains: \n" + group);
+                    }
+                }
+                catch (Exception e) {
+                    System.out.println("Put string");
+                    scan.nextLine();
                 }
             }
         }
